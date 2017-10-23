@@ -57,7 +57,6 @@ impl<K: Eq + Hash, V> FifoCache<K, V> {
 
         // remove old entry from the cache
         while self.fifo.len() > self.size {
-            println!("asdfadsfas");
             let entry = self.fifo.pop_front().expect(
                 "failed to pop_front from FifoCache",
             );
