@@ -22,6 +22,9 @@ fn main() {
     assert_eq!(cache.insert(1, 1), None);
     // insert entry
     assert_eq!(cache.insert(2, 2), None);
+
+
+
     // this will update the entry
     assert_eq!(cache.insert(2, 4), Some(Arc::new(2)));
     // this will flush out the first entry
@@ -36,7 +39,7 @@ fn main() {
 
 Licensed under either of
 
-- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
-- MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE_APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
+- MIT license ([LICENSE-MIT](LICENSE_MIT) or http://opensource.org/licenses/MIT
 
 at your option.
