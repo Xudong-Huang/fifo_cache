@@ -1,9 +1,12 @@
 # fifo_cache
 
+![license](https://img.shields.io/badge/license-MIT%2FApache%202.0-blue.svg)
+
 A simple rust fifo cache
 
 If too much entries were inserted into the cache, the oldest entries would be removed from the cache to keep the cache size no bigger than the maxium size.
 
+## Examples
 
 ```rust
 extern crate fifo_cache;
@@ -28,3 +31,12 @@ fn main() {
 }
 
 ```
+
+## License
+
+Licensed under either of
+
+- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
+- MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+
+at your option.
