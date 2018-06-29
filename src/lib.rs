@@ -1,7 +1,7 @@
+use std::collections::{HashMap, VecDeque};
+use std::hash::Hash;
 use std::rc::Rc;
 use std::sync::Arc;
-use std::hash::Hash;
-use std::collections::{HashMap, VecDeque};
 
 /// A simple fifo cache.
 ///
@@ -50,22 +50,21 @@ impl<K: Eq + Hash, V> FifoCache<K, V> {
             return Some(entry.insert(v));
         }
 
+        // If the capacity is exceeded, remove old entry from the cache
+        while self.fifo.len() > self.size - 1 {
+            let entry = self
+                .fifo
+                .pop_front()
+                .expect("failed to pop_front from FifoCache");
+            self.map
+                .remove(&entry)
+                .expect("failed to remove from FifoCache");
+        }
+
         // need to insert the entry
         let k1 = k.clone();
         self.fifo.push_back(k1);
-        let ret = self.map.insert(k, v);
-
-        // remove old entry from the cache
-        while self.fifo.len() > self.size {
-            let entry = self.fifo.pop_front().expect(
-                "failed to pop_front from FifoCache",
-            );
-            self.map.remove(&entry).expect(
-                "failed to remove from FifoCache",
-            );
-        }
-
-        ret
+        self.map.insert(k, v)
     }
 }
 
